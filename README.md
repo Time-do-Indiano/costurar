@@ -18,7 +18,7 @@
     </td>
     <td>
       <div>
-        <img src="https://joaopauloaramuni.github.io/image/logo_ES_vertical.png" alt="Logo do Projeto" width="120px"/>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToPgZto7aOkp8eWX95CJbriH_YqOo7UK90BFUJDs8uDbJDBqSs9Hgn0vQ&s=10" alt="Logo do Projeto" width="120px"/>
       </div>
     </td>
   </tr> 
