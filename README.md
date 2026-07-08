@@ -80,37 +80,35 @@
 ---
 
 ## 📝 Sobre o Projeto
-Nesta seção, descreva de forma clara e objetiva **o propósito do seu projeto**, explicando:
 
-- **Por que ele existe** — qual motivação levou à sua criação.  
-- **Qual problema ele resolve** — que dor, necessidade ou oportunidade ele atende.  
-- **Qual o contexto** — acadêmico, profissional, pessoal, experimental, etc.  
-- **Onde ele pode ser utilizado** — cenários reais ou simulados.  
+### 🎯 Motivação e Ideia Inicial
+A ideia inicial do projeto nasceu da observação do cotidiano de costureiras. Embora esses profissionais entreguem produtos de altíssimo valor e exclusividade, a gestão dos bastidores costuma ser caótica. A motivação para criar este sistema foi a oportunidade de aplicar conceitos modernos de engenharia de software para preencher uma lacuna de mercado: a falta de ferramentas administrativas desenhadas sob medida para o setor criativo. 
 
-Procure responder perguntas como:
-- *Qual foi a ideia inicial do projeto?*
-- *O que ele entrega de valor ao usuário?*
-- *Por que alguém utilizaria ou contribuiria com esse projeto?*
-- *O que o torna relevante ou interessante?*
-
-Escreva de forma objetiva, mas completa, para que qualquer pessoa entenda rapidamente **o que é** e **por que importa**.
-
-> [!NOTE]
-> Esta seção segue boas práticas de documentação profissional e deve ser ajustada conforme o tipo e o objetivo do seu projeto.
+### ❌ O Problema
+Pequenos ateliês sofrem com a descentralização de informações. O relacionamento com o cliente e o histórico de pedidos ficam espalhados entre blocos de papel, planilhas complexas e conversas perdidas em aplicativos de mensagens. Essa falta de controle gera dores crônicas:
+* **Perda de prazos:** Dificuldade em visualizar a fila de produção e as datas de entrega.
+* **Falta de histórico:** Esquecimento de preferências específicas do cliente (medidas, materiais favoritos, restrições).
+* **Desorganização no fluxo:** Falta de clareza sobre em qual etapa de produção cada peça se encontra.
+  
+### 🌐 Contexto e Cenários de Uso
+O projeto foi concebido em um contexto de desenvolvimento de software focado em micro e pequenas empresas (PMEs), servindo como uma excelente aplicação prática de arquitetura limpa e experiência do usuário (UX) direcionada a nicho. Ele foi projetado para cenários reais ou simulados de:
+* Ateliês de costura, alfaiataria e moda sob medida.
+* Estúdios de artesanato, cerâmica e encadernação.
+* Oficinas de design manual, brindes corporativos e peças personalizadas.
+  
+### 💎 Entrega de Valor e Relevância
+O sistema entrega valor ao devolver o tempo do empreendedor: menos tempo gerenciando burocracias significa mais tempo criando arte. O que torna este projeto relevante e interessante é a sua **adaptabilidade**. Enquanto os CRMs tradicionais de mercado são rígidos e focados em grandes equipes de vendas corporativas (B2B), este sistema compreende a dinâmica de "encomendas" e o ciclo de vida único de um produto feito à mão. 
 
 ---
 
 ## ✨ Funcionalidades Principais
-Liste as funcionalidades de forma clara e objetiva.
 
 - 🔐 **Autenticação Segura:** Login, Cadastro e Recuperação de Senha.
-- 📈 **Painel de Controle:** Visualização de dados em tempo real com gráficos.
-- ⚙️ **Gerenciamento de CRUD:** Criação, Leitura, Atualização e Deleção de recursos (e.g., Usuários, Itens, Posts).
+- 📈 **Gestão de Pedidos:** Visualização dos pedidos em tempo real.
+- ⚙️ **Gerenciamento de CRUD:** Criação, Leitura, Atualização e Deleção de recursos (e.g., Usuários, Pedidos).
 - 📊 **Relatórios Exportáveis:** Exportação de dados em PDF, CSV ou Excel.
 - 🌐 **Internacionalização (i18n):** Suporte a múltiplos idiomas.
-- 🧵 **Logs e Monitoramento:** Registro detalhado de atividades e análise de desempenho.
-- 🔄 **Integração com APIs Externas:** Conexão com serviços de terceiros (pagamentos, mapas, autenticação, etc.).
-- 📨 **Sistema de Notificações:** Envio de alertas por e-mail, push ou notificações internas.
+- 📨 **Sistema de Notificações:** Envio de alertas por WhatsApp.
 
 ---
 
@@ -120,24 +118,19 @@ As seguintes ferramentas, frameworks e bibliotecas foram utilizados na construç
 
 ### 💻 Front-end
 
-* **Framework/Biblioteca:** [Ex: React v18, Vue.js v3, Angular v17]
-* **Linguagem/Superset:** [Ex: TypeScript, JavaScript ES6+]
-* **Estilização:** [Ex: Tailwind CSS, Sass, Styled Components, Material UI]
-* **Gerenciamento de Estado:** [Ex: Redux Toolkit, Zustand, Context API]
-* **Build Tool:** [Ex: Vite, Webpack]
+* **Framework/Biblioteca:** React v19
+* **Linguagem/Superset:** JavaScript
+* **Estilização:** Tailwind CSS
+* **Gerenciamento de Estado:** Context API
+* **Build Tool:** Vite
 
 ### 🖥️ Back-end
 
-* **Linguagem/Runtime:** [Ex: Java 17 (JDK), Node.js v20, Python 3.11]
-* **Framework:** [Ex: Spring Boot 3.x, NestJS, Express, Django]
-* **Banco de Dados:** [Ex: PostgreSQL, MySQL, MongoDB]
-* **ORM / Query Builder:** [Ex: Hibernate/JPA, Prisma, TypeORM]
-* **Autenticação:** [Ex: JWT, OAuth2, Spring Security]
-
-### 📱 Mobile (Opcional)
-
-* **Framework:** [Ex: React Native, Flutter, Kotlin Multiplatform]
-* **Ferramentas:** [Ex: Expo, Android Studio, Xcode]
+* **Linguagem/Runtime:** JavaScript ES2025
+* **Framework:** Express 5.2
+* **Banco de Dados:** SQLite 2.21
+* **ORM / Query Builder:** Prisma 2.21
+* **Autenticação:** JWT
 
 ### ⚙️ Infraestrutura & DevOps
 
@@ -150,17 +143,80 @@ As seguintes ferramentas, frameworks e bibliotecas foram utilizados na construç
 
 ## 🏗 Arquitetura
 
-Descreva aqui a **arquitetura completa do sistema**, explicando como as camadas, módulos e componentes foram organizados. Informe também **por que** essa arquitetura foi escolhida e **quais problemas ela ajuda a resolver**.
+### 🌐 Visão Geral da Arquitetura
 
-Você pode incluir:
+O sistema adota uma **Arquitetura em Camadas (Layered Architecture)** baseada no ecossistema Node.js com Express no backend e React no frontend, utilizando o padrão arquitetural **Controller-Service-Repository**. 
+Essa divisão clara de responsabilidades resolve diretamente o problema da manutenção complexa:
+* **Interface desacoplada:** A interface gráfica (frontend) não conhece as regras de persistência de dados.
+* **Isolamento de regras:** O banco de dados não dita as regras de negócio.
+* **Core protegido:** A lógica de negócio fica totalmente isolada e protegida contra alterações externas.
 
-- **Visão geral da arquitetura** (ex.: camadas, módulos, microsserviços, monólito modular, hexagonal, MVC etc.)
-- **Principais componentes** e o papel de cada um
-- **Padrões de design adotados** (ex.: Repository, Service Layer, DTOs, Factory, Observer)
-- **Fluxo de dados** entre as partes do sistema
-- **Tecnologias utilizadas em cada camada**
-- **Decisões arquiteturais importantes**
-- **Trade-offs** ou limitações relevantes
+### 📦 Camadas do Sistema e Principais Componentes
+
+O servidor está estruturado logicamente em divisões bem organizadas, permitindo a escalabilidade e a reutilização de componentes:
+
+![Arquitetura de Componentes](documentacao/arquitetura%20componentes.png)
+
+* **Navegador do Cliente (Frontend):** Uma aplicação construída em **React** que interage com o usuário e consome os endpoints expostos pelo servidor através de requisições HTTP utilizando o formato padrão JSON.
+* **Middlewares (Security):** Uma camada de segurança que atua de forma transversal. O `Auth Middleware (JWT)` intercepta e valida os tokens de sessão antes que a requisição chegue aos controladores de domínio protegidos, garantindo o controle de acesso rígido.
+* **Controllers (API Layer):** Composto por `ClientController`, `OrderController` e `AuthController`. É a porta de entrada da API; recebe as requisições HTTP, valida o formato dos dados brutos recebidos e delega a execução para a camada de serviços.
+* **Services (Business Layer):** Onde reside o coração da aplicação (`ClientService`, `OrderService`, `AuthService` e `NotificationService`). Esta camada orquestra todas as regras de negócio, como validações cadastrais, manipulação de fluxos de pedidos e o acionamento de serviços secundários.
+* **Data Access (Models/Repositories):** Camada de persistência composta por `ClientRepo`, `OrderRepo` e `UserRepo`. Ela abstrai o acesso ao banco de dados por meio de um Driver/ORM, fornecendo uma interface limpa de manipulação de dados para as camadas superiores.
+* **Banco de Dados:** Utiliza o mecanismo **SQLite**, operando através de um arquivo local de configuração denominado `atelier.db`.
+* **Serviços Externos:** Integração com a **Twilio API (WhatsApp)**, consumida via chamadas REST pela camada de notificações para atualizar os clientes externos sobre o andamento de seus serviços de forma automatizada.
+
+### 📐 Modelo de Domínio (Entidades)
+
+A modelagem de dados do ecossistema do ateliê foi estruturada de forma relacional para refletir com fidelidade as operações reais de costura, alfaiataria e customização:
+
+![Diagrama de Classes](documentacao/class.png)
+
+* **User:** Define o operador do sistema no ateliê, contendo credenciais essenciais de acesso e controle de autenticação (`email`, `password`, `tokenSession`).
+* **Client:** Representa o cliente do ateliê, vinculando seu nome e telefone de contato direto para comunicações operacionais.
+* **Order & OrderStatus:** O pedido (`Order`) é a entidade centralizada que consolida o código do pedido, o cliente associado, o valor total calculado (`totalAmount`) e o estado atual através do Enum `OrderStatus` (`PENDING`, `IN_PROGRESS`, `COMPLETED`, `DELIVERED`).
+* **OrderItem:** Um pedido pode conter múltiplos itens de serviço. Cada item especifica o tipo de serviço (`ServiceType`, que dita o `basePrice`), a peça de roupa física modificada (`Clothing`, mapeando o nome, material e tamanho) e a lista de insumos efetivamente consumidos (`UsedProduct`).
+* **Product & UsedProduct:** Permite associar produtos e materiais do estoque às ordens de serviço específicas, discriminando de forma exata a quantidade utilizada de cada item para fins de precificação e controle automático de almoxarifado.
+
+### 4. 🔄 Fluxo de Dados e Casos de Uso
+
+A dinâmica de uso organiza a experiência das personas envolvidas (Usuário do Ateliê, Cliente e o Sistema Twilio) em fluxos previsíveis e seguros:
+
+![Diagrama de Casos de Uso](documentacao/casos%20de%20uso.png)
+
+```text
+[Aplicação React] 
+       │ (HTTP REST JSON)
+       ▼
+[Auth Middleware] ──(Se Inválido)──► [Bloqueia / Retorna 401]
+       │ (Se Válido)
+       ▼
+[Controllers]
+       │ (Repassa DTO limpo)
+       ▼
+[Services (Business)] ──(Gera Notificação)──► [NotificationService] ──► [Twilio API]
+       │
+       ▼
+[Data Access (Repo)]
+       │ (Driver / ORM)
+       ▼
+[SQLite (atelier.db)]
+```
+
+* **🔐 Acesso e Conta:** O usuário gerencia seu acesso ao ecossistema através dos fluxos de cadastro de conta, login e recuperação de senha.
+* **🧵 Gestão do Atelier:** O usuário operacional interage diretamente com as telas de visualização de pedidos, controle de estoque, registro de materiais utilizados e atualização em tempo real do status da produção.
+* **🔔 Interação e Notificação:** Ações críticas como *"Solicitar Pedido"* ou *"Atualizar Status"* incluem intrinsecamente o gatilho automático de envio de notificações. O `OrderService` processa as regras de transição de estado, altera as tabelas locais no banco via `OrderRepo` e despacha uma solicitação assíncrona ao `NotificationService`, que consome a API da Twilio para alertar o cliente final diretamente no WhatsApp.
+
+### 5. ⚖️ Decisões Arquiteturais e Trade-offs
+
+Nenhum design de software é perfeito; toda escolha técnica envolve vantagens e renúncias. Abaixo estão listadas as principais decisões tomadas no projeto:
+
+#### 💾 A escolha do SQLite (`atelier.db`)
+* **Por que foi escolhido:** Para o modelo de negócios de um ateliê local (pequeno porte), um banco de dados baseado em arquivo elimina custos recorrentes com infraestrutura de servidores em nuvem dedicados (como instâncias de bancos gerenciados) e simplifica drasticamente o processo de implantação, transporte e backup do sistema.
+* **Trade-off:** O SQLite utiliza travamento de arquivo completo em operações de escrita (gravações sequenciais). Caso a aplicação precise escalar no futuro para um modelo SaaS com milhares de ateliês salvando dados simultaneamente, o gargalo de concorrência exigirá a migração da camada de *Data Access* para um banco de dados cliente-servidor robusto, como o PostgreSQL.
+
+#### ✉️ Abstração por Serviços (`NotificationService`)
+* **Por que foi escolhido:** O encapsulamento do envio de mensagens em um serviço isolado blinda o restante do ecossistema. O `OrderService` sabe *quando* o cliente precisa ser notificado, mas não precisa conhecer *como* a mensagem é transmitida ou formatada.
+* **Trade-off:** Introduz uma leve camada extra de código e indireção no backend, porém garante que a substituição futura da Twilio por qualquer outra API de comunicação do mercado ou por envio de e-mails exija a alteração de código em apenas um arquivo isolado do projeto.
 
 ### Exemplos de diagramas
 
