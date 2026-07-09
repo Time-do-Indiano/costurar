@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ateliê Costura</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Variáveis de Cores Alinhadas e Prontas */
+        :root {
+            --bg-color: #FAF6F0;
+            --text-main: #3D2B24;
+            --text-muted: #7A6961;
+            --primary: #B8593F;
+            --primary-hover: #9E4730;
+            --card-bg: #FFFFFF;
+            --accent-bg: #FCE6DD;
+            --border-color: #E6DDD7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Caixa container principal que envolve o conteúdo (Estilo "Canvas") */
+        .cont {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px 10px;
+            background-color: #FFFFFF;
+            border-radius: 24px;
+            border: 1px solid rgba(230, 221, 215, 0.6);
+            box-shadow: 0 15px 50px rgba(61, 43, 36, 0.04);
+        }
+
+        /* --- Header / Navbar --- */
+        header {
+            padding: 20px 0;
+            background-color: var(--bg-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--text-main);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-icon {
+            background-color: var(--primary);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        /* --- Hero Section (Ajustado para Flexbox responsivo) --- */
+        .hero {
+            padding: 60px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .hero-left {
+            flex: 1.1;
+        }
+
+        .hero-right {
+            flex: 0.9;
+            position: relative;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: #F5EBE4;
+            color: var(--primary);
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .hero h1 {
+            font-family: 'Instrument Serif', serif;
+            font-size: 3.8rem;
+            line-height: 1.05;
+            font-weight: 400;
+            margin-bottom: 24px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 36px;
+            max-width: 480px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 16px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 30px;
+            border-radius: 100px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            box-shadow: 0 4px 15px rgba(184, 89, 63, 0.2);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(184, 89, 63, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--bg-color);
+            border-color: var(--text-muted);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Right (Imagens e Balão) */
+        .image-placeholder {
+            position: relative; 
+            width: 100%;
+            max-width: 380px; 
+            border-radius: 20px;
+            overflow: visible; 
+        }
+        
+        .main-hero-img {
+            width: 100%;
+            height: 460px;
+            display: block;
+            border-radius: 20px;
+            object-fit: cover;
+            box-shadow: 0 20px 40px rgba(61, 43, 36, 0.06);
+        }
+
+        .floating-card {
+            position: absolute;
+            bottom: 30px;
+            left: -30px;
+            background: white;
+            padding: 18px 28px;
+            border-radius: 16px;
+            box-shadow: 0 15px 35px rgba(61, 43, 36, 0.1);
+            border: 1px solid rgba(230, 221, 215, 0.6);
+            text-align: center;
+            z-index: 10;
+        }
+
+        .floating-card span {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+            font-weight: 500;
+        }
+
+        .floating-card strong {
+            font-family: 'Instrument Serif', serif;
+            font-size: 2rem;
+            color: var(--text-main);
+            font-weight: 400;
+        }
+
+        /* --- Serviços Section --- */
+        .services-section {
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            font-family: 'Instrument Serif', serif;
+            font-size: 2.6rem;
+            font-weight: 400;
+            margin-bottom: 8px;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 36px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .service-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 28px 24px;
+            border-radius: 16px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+            box-shadow: 0 12px 30px rgba(61, 43, 36, 0.05);
+        }
+
+        .service-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        .service-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+         --- Formulário Section ---
+        .form-section {
+            padding: 60px 20px 80px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .form-card {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 48px;
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 5px;
+            margin-top: 5px;
+        }
+
+        .form-header h2 {
+            font-family: 'Instrument Serif', serif;
+            font-size: 2.6rem;
+            font-weight: 400;
+            margin-bottom: 8px;
+        }
+
+        /*.form-header p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 4px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="date"],
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            background-color: #FFFFFF;
+            font-family: inherit;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(184, 89, 63, 0.1);
+        }*/
+
+        /* Chips de Seleção Modernizados */
+        .chips-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 4px;
+        }
+
+        .chip {
+            background-color: white;
+            border: 1px solid var(--border-color);
+            padding: 10px 20px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .chip:hover {
+            border-color: var(--text-main);
+            color: var(--text-main);
+        }
+
+        .chip.active {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            box-shadow: 0 4px 12px rgba(184, 89, 63, 0.15);
+        }
+
+        .form-card textarea {
+            resize: vertical;
+            min-height: 110px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            text-align: center;
+            margin-top: 12px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            background-color: var(--bg-color);
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* --- Responsividade Inteligente --- */
+        @media (max-width: 950px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                gap: 50px;
+                padding: 40px 10px;
+            }
+            .hero p {
+                margin: 0 auto 36px auto;
+            }
+            .btn-group {
+                justify-content: center;
+            }
+            .hero-right {
+                justify-content: center;
+                width: 100%;
+            }
+            .floating-card {
+                left: -10px;
+            }
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .cont {
+                margin: 20px 10px;
+                border-radius: 16px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            .form-card {
+                padding: 28px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">A</div>
+                Ateliê Costura
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#">Painel</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="cont">
+        <main class="container">
+            
+            <section class="hero">
+                <div class="hero-left">
+                    <span class="badge">Atendimento personalizado</span>
+                    <h1>Costura feita com <span>carinho</span>, no seu tempo.</h1>
+                    <p>Ajustes, reformas e peças sob medida. Peça seu orçamento em minutos e acompanhe cada etapa até a entrega.</p>
+                    <div class="btn-group">
+                        <a href="#pedido" class="btn btn-primary">Solicitar orçamento</a>
+                        <a href="#servicos" class="btn btn-secondary">Ver serviços</a>
+                    </div>
+                </div>
+                
+                <div class="hero-right">
+                    <div class="image-placeholder">
+                        <img src="foto-salao.jpg" alt="Trabalho de Costura" class="main-hero-img">
+                        <div class="floating-card">
+                            <span>Pedidos entregues</span>
+                            <strong>+ 1.200</strong>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="servicos" class="services-section">
+                <h2 class="section-title">Serviços</h2>
+                <p class="section-subtitle">Escolha o que precisa — cuidamos do resto.</p>
+                
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h3>Ajuste de roupa</h3>
+                        <p>Barra, cintura, mangas — caimento perfeito para o seu corpo.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Reforma</h3>
+                        <p>Transforme peças antigas ou esquecidas em suas favoritas.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Sob medida</h3>
+                        <p>Modelagens e peças exclusivas desenhadas para você.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Conserto</h3>
+                        <p>Troca de zíperes, ajustes de forros, remendos e acabamentos.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="Sobre Nós" class="form-section">
+                <div class="form-card">
+                    <div class="form-header">
+                        <h2>Nossa História</h2>
+                        <p>O Ateliê Costura nasceu de uma paixão antiga: a arte de transformar tecidos em memórias, conforto e autoestima. Acreditamos que cada peça de roupa carrega uma história e, por isso, merece ser tratada com o máximo de respeito e carinho. Mais do que cortar e costurar, o nosso propósito é entregar um atendimento personalizado e soluções sob medida para o seu guarda-roupa. Seja para fazer a barra perfeita daquela calça favorita, reformar uma peça especial ou criar um modelo único do zero, nós cuidamos de tudo no seu tempo. Aqui, cada ponto é dado com dedicação para que você vista não apenas uma roupa, mas sim o seu bem-estar.</p>
+                    </div>
+
+                    <!--<form action="#" method="POST" onsubmit="event.preventDefault();">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nome">Seu nome</label>
+                                <input type="text" id="nome" placeholder="Maria Silva">
+                            </div>
+                            <div class="form-group">
+                                <label for="whatsapp">WhatsApp / telefone</label>
+                                <input type="text" id="whatsapp" placeholder="(11) 90000-0000">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Tipo de serviço</label>
+                            <div class="chips-container">
+                                <button type="button" class="chip">Ajuste de roupa</button>
+                                <button type="button" class="chip">Reforma</button>
+                                <button type="button" class="chip">Sob medida</button>
+                                <button type="button" class="chip active">Conserto</button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="descricao">Descreva a peça e o que precisa</label>
+                            <textarea id="descricao" placeholder="Ex.: barra de calça jeans, encurtar 4cm."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="prazo">Prazo desejado</label>
+                            <input type="date" id="prazo">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-submit">Enviar pedido</button>
+                    </form>-->
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Ateliê Costura - Feito com carinho</p>
+        </div>
+    </footer>
+
+    <script>
+        const chips = document.querySelectorAll('.chip');
+        chips.forEach(chip => {
+            chip.addEventListener('click', () => {
+                chips.forEach(c => c.classList.remove('active'));
+                chip.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
